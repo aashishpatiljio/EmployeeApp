@@ -25,5 +25,12 @@ public interface IEmployeeService {
 	 * performs DELETE operations at DB.
 	 */
 	public void deleteEmployee(Integer id);
+	
+	/**
+	 * This method is used to read @param id as an
+	 * input and @return Employee object else
+	 * EmployeeNotFoundException
+	 */
+	public Employee getOneEmployee(Integer id);
 
 }

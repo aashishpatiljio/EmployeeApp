@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import in.nareshit.aashish.exception.EmployeeNotFoundException;
 import in.nareshit.aashish.model.Employee;
 import in.nareshit.aashish.repo.EmployeeRepository;
 import in.nareshit.aashish.service.IEmployeeService;
@@ -17,8 +18,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 	@Override
 	public Integer saveEmployee(Employee e) {
 		/*
-		 * save(obj) method returns same object with id 
-		 * effected after save.
+		 * save(obj) method returns same object with id effected after save.
 		 */
 		return repo.save(e).getId();
 	}
@@ -34,6 +34,14 @@ public class EmployeeServiceImpl implements IEmployeeService {
 	public void deleteEmployee(Integer id) {
 		repo.deleteById(id);
 
+	}
+
+	@Override
+	public Employee getOneEmployee(Integer id) {
+		Employee e = repo.findById(id).orElseThrow(
+				() -> new EmployeeNotFoundException("EMPLOYEE '" + id + "' NOT EXIST")
+				);
+		return e;
 	}
 
 }
