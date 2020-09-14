@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import in.nareshit.aashish.model.Employee;
 import in.nareshit.aashish.service.IEmployeeService;
@@ -62,6 +63,28 @@ public class EmployeeController {
 		List<Employee> list = service.getAllEmployees();
 		//sending to UI
 		model.addAttribute("list", list);
+		return "EmployeeData";
+	}
+	
+	/**
+	 * 4. This method read id from Path using @RequestParam
+	 * 	  Given from UI and makes service call to delete data.
+	 * 	  Create one new message and load data  send back to
+	 *    same data page
+	 *    Path: /delete, Param ?id=val		(GET type)
+	 *    
+	 * @return te same data page
+	 */
+	@GetMapping("/delete")
+	public String deleteEmployee(
+			@RequestParam Integer id,
+			Model model
+			) {
+		//call service layer method
+		service.deleteEmployee(id);
+		//send details to UI
+		model.addAttribute("message", "Employee '"+id+"' Deleted");
+		model.addAttribute("list", service.getAllEmployees());//see method 3  
 		return "EmployeeData";
 	}
 	

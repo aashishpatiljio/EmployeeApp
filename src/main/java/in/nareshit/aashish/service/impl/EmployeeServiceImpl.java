@@ -17,8 +17,8 @@ public class EmployeeServiceImpl implements IEmployeeService {
 	@Override
 	public Integer saveEmployee(Employee e) {
 		/*
-		 * save(obj) method returns same object with id effected
-		 * after save.
+		 * save(obj) method returns same object with id 
+		 * effected after save.
 		 */
 		return repo.save(e).getId();
 	}
@@ -26,8 +26,14 @@ public class EmployeeServiceImpl implements IEmployeeService {
 	@Override
 	public List<Employee> getAllEmployees() {
 		List<Employee> list = repo.findAll();
-		list.sort((e1,e2)->e1.getId()-e2.getId());
+		list.sort((e1, e2) -> e1.getId() - e2.getId());
 		return list;
+	}
+
+	@Override
+	public void deleteEmployee(Integer id) {
+		repo.deleteById(id);
+
 	}
 
 }

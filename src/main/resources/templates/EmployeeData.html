@@ -4,24 +4,28 @@
 <meta charset="ISO-8859-1">
 <title>EmployeeData Page</title>
 <!-- CSS only -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 <!-- JS, Popper.js, and jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<h3 style="color:red">Employee Data</h3>
+	<h3 style="color: red">Employee Data</h3>
 	<table border="1">
 		<tr>
-			<td>ID</td>
-			<td>NAME</td>
-			<td>EMAIL</td>
-			<td>GENDER</td>
-			<td>ADDRESS</td>
-			<td>PROJECTS</td>
-			<td>SLOTS</td>
+			<th>ID</th>
+			<th>NAME</th>
+			<th>EMAIL</th>
+			<th>GENDER</th>
+			<th>ADDRESS</th>
+			<th>PROJECTS</th>
+			<th>SLOTS</th>
+			<th>OPERATIONS</th>
 		</tr>
 		<tr th:each="ob:${list}">
 			<td th:text="${ob.id}"></td>
@@ -31,7 +35,9 @@
 			<td th:text="${ob.eaddr}"></td>
 			<td th:text="${ob.prjs}"></td>
 			<td th:text="${ob.slots}"></td>
+			<td><a th:href="@{/employee/delete?id={id}(id=${ob.id})}">DELETE</a></td>
 		</tr>
 	</table>
+	<span th:text="${message}"></span>
 </body>
 </html>

@@ -19,5 +19,11 @@ public interface IEmployeeService {
 	 * @return List<Employee> object back to UI
 	 */
 	public List<Employee> getAllEmployees();
+	
+	/**
+	 * This method takes one @param id (PK) and
+	 * performs DELETE operations at DB.
+	 */
+	public void deleteEmployee(Integer id);
 
 }
