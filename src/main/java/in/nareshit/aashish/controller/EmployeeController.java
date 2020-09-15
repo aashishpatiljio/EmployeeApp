@@ -87,7 +87,22 @@ public class EmployeeController {
 		model.addAttribute("list", service.getAllEmployees());//see method 3  
 		return "EmployeeData";
 	}
-	
-	
+	/**
+	 * 5. This method we have taken here to show Edit page
+	 *    onclick of EDIT hyperlink.
+	 *    ex- Req: /employee/edit?id=10   ,  Type: GET
+	 *    Read object from database using PK(Id) and send it
+	 *    to Edit form.
+	 *	  @return to the EmployeeEdit page.
+	 */
+	@GetMapping("/edit")
+	public String showEdit(
+			@RequestParam Integer id, 
+			Model model) {
+		Employee e = service.getOneEmployee(id);
+		model.addAttribute("employee", e);
+		return "EmployeeEdit";
+	}
+		
 
 }
