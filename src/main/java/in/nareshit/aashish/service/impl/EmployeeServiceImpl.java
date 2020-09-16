@@ -44,4 +44,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		return e;
 	}
 
+	@Override
+	public void updateEmployee(Employee emp) {
+		repo.save(emp);
+	}
+
 }

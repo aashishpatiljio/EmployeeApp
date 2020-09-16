@@ -103,6 +103,28 @@ public class EmployeeController {
 		model.addAttribute("employee", e);
 		return "EmployeeEdit";
 	}
+	
+	/**
+	 * 6. On click of update button, read form data as 
+	 *    ModelAttribute employee , send it to database
+	 *    usinf Service layer. Redirect to all.
+	 *    [Response.sendRedirect("/all")
+	 * @return
+	 */
+	@PostMapping("/update")
+	public String updateEmp(
+			@ModelAttribute Employee employee,
+			Model model
+			) {
+		service.updateEmployee(employee);
+		//send details to UI
+		/*
+		model.addAttribute("message", "Employee '"+employee.getId()+"' Updated");
+		model.addAttribute("list", service.getAllEmployees());
+		return "EmployeeData";
+		*/
+		return "redirect:all";
+	}
 		
 
 }

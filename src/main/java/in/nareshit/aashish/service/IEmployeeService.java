@@ -32,5 +32,11 @@ public interface IEmployeeService {
 	 * EmployeeNotFoundException
 	 */
 	public Employee getOneEmployee(Integer id);
+	
+	/**
+	 * This method is used to update employee based on id (PK)
+	 * @param emp is taken as Model attribute
+	 */
+	public void updateEmployee(Employee emp);
 
 }
