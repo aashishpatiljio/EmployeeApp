@@ -99,7 +99,9 @@ public class EmployeeController {
 	public String showEdit(
 			@RequestParam Integer id, 
 			Model model) {
+		//call service layer method
 		Employee e = service.getOneEmployee(id);
+		//send details to UI
 		model.addAttribute("employee", e);
 		return "EmployeeEdit";
 	}
